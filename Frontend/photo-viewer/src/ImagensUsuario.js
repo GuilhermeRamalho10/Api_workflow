@@ -1,31 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// ImagensUsuario.js
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-const ImagensUsuario = ({ token }) => {
-  const [imagens, setImagens] = useState([]);
+const ImagensUsuario = () => {
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get('token');
+  const [fotos, setFotos] = useState([]);
 
   useEffect(() => {
-    const fetchImagens = async () => {
+    // Função para buscar as fotos do usuário com o token
+    const buscarFotos = async () => {
       try {
-        // Atualizado para apontar para localhost
-        const response = await axios.get(`http://localhost:8000/photos/?token=${token}`);
-        setImagens(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar imagens:", error);
+        const resposta = await fetch(`http://127.0.0.1:8000/photos/?token=${token}`);
+        if (!resposta.ok) {
+          throw new Error('Erro ao buscar fotos');
+        }
+        const fotos = await resposta.json();
+        setFotos(fotos);
+      } catch (erro) {
+        console.error(erro);
       }
     };
 
-    fetchImagens();
+    if (token) {
+      buscarFotos();
+    }
   }, [token]);
 
   return (
     <div>
-      {imagens.map(imagem => (
-        <div key={imagem.id}>
-          <img src={imagem.url} alt={imagem.titulo} />
-          <p>{imagem.titulo}</p>
-        </div>
-      ))}
+      {fotos.length > 0 ? (
+        fotos.map((foto) => (
+          <div key={foto.id}>
+            <img src={foto.url} alt={foto.titulo} />
+            <p>{foto.titulo}</p>
+          </div>
+        ))
+      ) : (
+        <p>Não foram encontradas fotos.</p>
+      )}
     </div>
   );
 };
