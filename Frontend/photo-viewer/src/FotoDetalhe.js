@@ -1,46 +1,34 @@
-// FotoDetalhe.js
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useParams, useSearchParams } from 'react-router-dom';
 
-const FotoDetalhe = () => {
+const PhotoDetailPage = () => {
+  const [photo, setPhoto] = useState(null);
+  const { id } = useParams();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
-  const { fotoId } = useParams(); // Certifique-se que a rota é "/foto/:fotoId"
-  const [fotoDetalhe, setFotoDetalhe] = useState(null);
 
   useEffect(() => {
-    const buscarDetalhesFoto = async () => {
+    const fetchPhoto = async () => {
       try {
-        const url = `http://127.0.0.1:8000/photos/${fotoId}?token=${token}`;
-        const resposta = await fetch(url);
-        if (!resposta.ok) {
-          throw new Error('Erro ao buscar detalhes da foto');
-        }
-        const dados = await resposta.json();
-        setFotoDetalhe(dados);
-      } catch (erro) {
-        console.error(erro);
+        const result = await axios(`http://127.0.0.1:8000/photos/${id}/?token=${token}`);
+        setPhoto(result.data);
+      } catch (error) {
+        console.error('Error fetching photo:', error);
       }
     };
 
-    if (fotoId && token) {
-      buscarDetalhesFoto();
-    }
-  }, [fotoId, token]);
+    if (token) fetchPhoto();
+  }, [id, token]);
+
+  if (!photo) return <div>Loading...</div>;
 
   return (
     <div>
-      {fotoDetalhe ? (
-        <div>
-          <img src={fotoDetalhe.url} alt={fotoDetalhe.titulo} />
-          <h2>{fotoDetalhe.titulo}</h2>
-          {/* Outros detalhes da foto que você queira mostrar */}
-        </div>
-      ) : (
-        <p>Não foi possível encontrar os detalhes da foto.</p>
-      )}
+      <img src={photo.image} alt={photo.title} style={{ width: '300px', height: '300px' }} />
+      <p>{photo.title}</p>
     </div>
   );
 };
 
-export default FotoDetalhe;
+export default PhotoDetailPage;
