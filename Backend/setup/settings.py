@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'workflow',
         'USER': 'user_workflow',
         'PASSWORD': '12345',
-        'HOST': '34.251.54.16',
+        'HOST': '3.249.143.4',
         'PORT': '3306',
     }
 }
