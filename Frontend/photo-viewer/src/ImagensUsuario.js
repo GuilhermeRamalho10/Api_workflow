@@ -23,7 +23,7 @@ const PhotosPage = () => {
 
   return (
     <div>
-      <h1>Fotos</h1>
+      
       {photos.map(photo => (
         <div key={photo.id}>
           <Link to={`/photos/${photo.id}?token=${token}`}>
