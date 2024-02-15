@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q(vf0pd6nd&r94#o*mgcv*naz*b)z)k%gx@6)sp0x-detcs-(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.251.54.16']
 
 
 # Application definition
@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'workflow',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'USER': 'user_workflow',
+        'PASSWORD': '12345',
+        'HOST': '34.251.54.16',
         'PORT': '3306',
     }
 }
