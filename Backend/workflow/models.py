@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Photo(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='photos/')
+    image = models.ImageField(upload_to='media/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -27,7 +27,7 @@ const PhotosPage = () => {
       {photos.map(photo => (
         <div key={photo.id}>
           <Link to={`/photos/${photo.id}?token=${token}`}>
-          <img src={`${photo.image}`} alt={photo.title} style={{ width: '100px', height: '100px' }} />
+          <img src={`${photo.image.replace('/photos/photos', '/photos')}`} alt={photo.title} style={{ width: '100px', height: '100px' }} />
           </Link>
           <p>{photo.title}</p>
         </div>
