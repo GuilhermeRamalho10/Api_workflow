@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q(vf0pd6nd&r94#o*mgcv*naz*b)z)k%gx@6)sp0x-detcs-(+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['34.251.219.35']
+ALLOWED_HOSTS = ['3.253.249.205']
 
 
 # Application definition
@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'workflow',
         'USER': 'user_workflow',
         'PASSWORD': '12345',
-        'HOST': '34.251.219.35',
+        'HOST': '3.253.249.205',
         'PORT': '3306',
     }
 }
