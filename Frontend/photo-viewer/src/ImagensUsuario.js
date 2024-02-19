@@ -11,7 +11,7 @@ const PhotosPage = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const result = await axios(`http://127.0.0.1:8000/photos/?token=${token}`);
+        const result = await axios(`http:// 3.253.249.205:8080/photos/?token=${token}`);
         setPhotos(result.data);
       } catch (error) {
         console.error('Error fetching photos:', error);
