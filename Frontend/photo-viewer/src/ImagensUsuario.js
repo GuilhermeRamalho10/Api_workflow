@@ -11,7 +11,7 @@ const PhotosPage = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const result = await axios(`https://www.guilhermeawstest.it/photos/?token=${token}`);
+        const result = await axios(`http://3.253.249.205:8080/photos/?token=${token}`);
         setPhotos(result.data);
       } catch (error) {
         console.error('Error fetching photos:', error);
@@ -27,7 +27,7 @@ const PhotosPage = () => {
       {photos.map(photo => (
         <div key={photo.id}>
           <Link to={`/photos/${photo.id}?token=${token}`}>
-          <img src={`${photo.image.replace('/photos/photos', '/photos')}`} alt={photo.title} style={{ width: '100px', height: '100px' }} />
+          <img src={photo.image} alt={photo.title} style={{ width: '100px', height: '100px' }} />
           </Link>
           <p>{photo.title}</p>
         </div>
