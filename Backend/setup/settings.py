@@ -150,9 +150,8 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  
-    "http://3.253.249.205",
-    'https://www.guilhermeawstest.it:8080'
+    "http://localhost:3000",
+    "https://www.guilhermeawstest.it",
 ]
