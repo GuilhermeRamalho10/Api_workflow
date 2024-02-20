@@ -11,7 +11,7 @@ const PhotoDetailPage = () => {
   useEffect(() => {
     const fetchPhoto = async () => {
       try {
-        const result = await axios(`https://www.guilhermeawstest.it/photos/${id}/?token=${token}`);
+        const result = await axios(`https://www.guilhermeawstest.it:8443/photos/${id}/?token=${token}`);
         setPhoto(result.data);
       } catch (error) {
         console.error('Error fetching photo:', error);
