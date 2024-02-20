@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from django.conf import settings
 from workflow.models import Photo
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpRequest
+
 
 class PhotoSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
