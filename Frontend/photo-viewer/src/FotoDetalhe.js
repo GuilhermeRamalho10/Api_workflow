@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const PhotoDetailPage = () => {
   const [photo, setPhoto] = useState(null);
   const { id } = useParams();
-  const [searchParams] = useSearchParams();
-  const token = searchParams.get('token');
 
   useEffect(() => {
     const fetchPhoto = async () => {
+      const token = localStorage.getItem('authToken');
+      console.log("Token:", token);
+      if (!token) {
+        console.error('No token found');
+        return;
+      }
       try {
-        const result = await axios(`http://127.0.0.1:8000/photos/${id}/?token=${token}`);
+        // Inclui o token na query string da URL
+        const result = await axios.get(`http://127.0.0.1:8000/photos/${id}/?token=${token}`);
         setPhoto(result.data);
       } catch (error) {
         console.error('Error fetching photo:', error);
       }
     };
 
-    if (token) fetchPhoto();
-  }, [id, token]);
+    fetchPhoto();
+  }, [id]);
 
   if (!photo) return <div>Loading...</div>;
 
