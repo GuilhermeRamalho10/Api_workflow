@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Verifica se o usuário já está logado
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      navigate('/photos'); // Redireciona para '/photos' se já estiver logado
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -32,7 +39,6 @@ function Login({ onLoginSuccess }) {
       console.error('Erro ao fazer login:', error.message);
     }
   };
-
 
   return (
     <div>
