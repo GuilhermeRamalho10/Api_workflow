@@ -16,7 +16,7 @@ const PhotoDetailPage = () => {
       }
       try {
         // Inclui o token na query string da URL
-        const result = await axios.get(`http://127.0.0.1:8000/photos/${id}/?token=${token}`);
+        const result = await axios.get(`https://www.guilhermeawstest.it:8443/photos/${id}/?token=${token}`);
         setPhoto(result.data);
       } catch (error) {
         console.error('Error fetching photo:', error);

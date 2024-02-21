@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q(vf0pd6nd&r94#o*mgcv*naz*b)z)k%gx@6)sp0x-detcs-(+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['3.253.249.205','guilhermeawstest.it', 'www.guilhermeawstest.it', '127.0.0.1']
 
 
 # Application definition
@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'workflow',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'USER': 'user_workflow',
+        'PASSWORD': '12345',
+        'HOST': '3.253.249.205',
         'PORT': '3306',
     }
 }

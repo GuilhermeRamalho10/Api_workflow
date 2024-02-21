@@ -18,7 +18,7 @@ function Login({ onLoginSuccess }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const loginUrl = 'http://localhost:8000/login/';
+    const loginUrl = 'https://www.guilhermeawstest.it:8443/login/';
 
     try {
       const response = await fetch(loginUrl, {

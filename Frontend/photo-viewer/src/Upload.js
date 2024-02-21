@@ -29,7 +29,7 @@ const Upload = () => {
 
     try {
       const token = localStorage.getItem('authToken');
-      await axios.post('http://127.0.0.1:8000/photos/?token=' + token, formData, {
+      await axios.post('https://www.guilhermeawstest.it:8443/photos/?token=' + token, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

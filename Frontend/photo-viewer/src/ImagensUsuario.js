@@ -13,7 +13,7 @@ const PhotosPage = () => {
         return;
       }
       try {
-        const result = await axios.get(`http://127.0.0.1:8000/photos/`, {
+        const result = await axios.get(`https://www.guilhermeawstest.it:8443/photos/`, {
           headers: { 
             // Se o backend espera o token na URL, mantenha a linha abaixo
             // Caso contrário, se o backend espera o token no cabeçalho Authorization, use a linha comentada abaixo
